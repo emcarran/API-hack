@@ -56,9 +56,9 @@ h1 {
     margin-bottom: 15px;
 }
 
+#all-items,
 #top-rated,
-#popular-items,
-#price {
+{
     padding: 8px;
 }
 
@@ -67,6 +67,7 @@ h1 {
     border: 1px solid;
     display: block;
     cursor: pointer;
+    background-color: whitesmoke;
     color: darkgray;
     font-family: arial;
     font-size: 1.5em;
