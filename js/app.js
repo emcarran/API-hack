@@ -1,47 +1,76 @@
-(function ($) {
+$(document).ready(function () {
 
-    $(document).ready(function () {
+    // STEP 1 - get the input from the user
+    "use strict";
+    $('#search-terms').on('click', function (event) {
+        event.preventDefault();
+        var item = $('#all-items').val();
+        var popular = $('#top-rated').val();
+        searchValidate(item, popular);
+    });
+});
 
-        // STEP 1 - get the input from the user
+//add Validation(item, popular);
 
-        $("#search-button").bind('submit', function () {
-            api_key = "AIzaSyCEKVSeuST3PwfJFcF7OmuKJYGSpKD99y4";
-            var item = $('#all-items').val();
-            var popular = $('#top-rated').val();
-            etsyUrl = 'http://openapi.etsy.com/v2/listings/active.js?keywords=' + item + '&limit=12&includes=Images:1&api_key=' + top - rated + '&limit=12&includes=Images:1&api_key=' + api_key;
+var searchValidate = function (item, popular) {
+    "use strict";
+    if ((item == '') && (popular == '')) {
+        alert('please enter an item in the text box!');
+        $('.item-details').html('');
+        return false;
+    } else {
+        getItem(item, popular);
+    }
+}
 
-            //searchValidation(item, popular);
+// takes error string and turns it into displayable DOM element
+var showError = function (error) {
+    var errorElem = $('.error').clone();
+    var errorText = '<p>' + error + '</p>';
+    errorElem.append(errorText);
+}
 
-            $('#item-details').empty();
-            $('<p></p>').text('searching for ' + item).appendTo('#item-details');
-            $('<p></p>').text('searching for ' + popular).appendTo('#item-details');
+// takes a string of semi-colon separated tags to be searched
+// for on Etsy
+var getItem = function (item, popular) {
+    var concatenatedUrl = 'https://openapi.etsy.com/v2/listings/active.js?keywords=' + item + '&limit=12&includes=Images:1&api_key=' + 'dk88st01cks0as9cv2iwr4hg';
+    var result = $.ajax({
+        url: concatenatedUrl,
+        dataType: 'jsonp',
+        //type: 'GET'
+    })
 
-            $.ajax({
-                url: etsyURL,
-                dataType: 'jsonp',
-                success: function (data) {
-                    if (data.ok) {
-                        $('#item-details').empty();
-                        if (data.count > 0) {
-                            $.each(data.results, function (i, item) {
-                                $("<img/>").attr("src", item.Images[0].url_75x75).appendTo('#item-details').wrap(
-                                    "<a href = '" + item.url + "'></a>"
-                                );
-                                if (i % 4 == 3) {
-                                    $('<br/>').appendTo('#item-details');
-                                }
-                            });
-                        } else {
-                            $('<p>No result.</p>').appendTo('#item-details');
-                        }
-                    } else {
-                        $('#item-details').empty();
-                        alert(data.error);
-                    }
-                }
-            });
-            return false;
-        })
+    .done(function (result) {
+        console.log(result);
+        $('.item-details').html('');
+        var itemResults = "";
+
+        $.each(result.results, function (i, item) {
+
+            itemResults += '<li>';
+            itemResults += '<div class = "product-image">';
+            itemResults += '<img src="' + item.Images[0].url_fullxfull + '" alt="item image" width="170">';
+            itemResults += '</div>';
+            itemResults += '<div class = "item-details">';
+            itemResults += '<p>' + item.title + '</p>';
+            itemResults += '<p> ' + item.description + '</p>';
+            itemResults += '</div>';
+            itemResults += '</li>';
+
+            // itemResults += '<li><div class="product-image"><img src="' +
+            // item.Images[0].url_fullxfull + '" alt="item image" width="170"></div><div
+            // class="item-details"><p>' +
+            // item.title + '</p><p> ' +
+            // item.description + '</p></div></li>';
+
+        });
+
+        $('.item-details').append(itemResults);
+    })
+
+    .fail(function (error, errorThrown) {
+        var errorElem = showError(error);
+        $('.search-results').append(errorElem);
     });
 
-})(jQuery);
+}
