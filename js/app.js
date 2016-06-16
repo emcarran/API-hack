@@ -52,7 +52,7 @@ var getItem = function (item, popular) {
             itemResults += '<img src="' + item.Images[0].url_fullxfull + '" alt="item image" width="170">';
             itemResults += '</div>';
             itemResults += '<div class = "item-details">';
-            itemResults += '<p>' + item.title + '</p>';
+            itemResults += '<h2>' + item.title + '</h2>';
             itemResults += '<p> ' + item.description + '</p>';
             itemResults += '</div>';
             itemResults += '</li>';
