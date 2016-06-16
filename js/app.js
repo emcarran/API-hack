@@ -48,11 +48,12 @@ var getItem = function (item, popular) {
         $.each(result.results, function (i, item) {
 
             itemResults += '<li>';
+            itemResults += '<h2>' + item.title + '</h2>';
             itemResults += '<div class = "product-image">';
             itemResults += '<img src="' + item.Images[0].url_fullxfull + '" alt="item image" width="170">';
             itemResults += '</div>';
             itemResults += '<div class = "item-details">';
-            itemResults += '<h2>' + item.title + '</h2>';
+            //itemResults += '<h2>' + item.title + '</h2>';
             itemResults += '<p> ' + item.description + '</p>';
             itemResults += '</div>';
             itemResults += '</li>';
