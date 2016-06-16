@@ -35,11 +35,6 @@ body {
     color: darkgray;
 }
 
-
-/*img {
-    margin-top: 50px;
-}*/
-
 .search-container {
     background-color: darkkhaki;
     margin: 1em auto;
@@ -56,9 +51,7 @@ h1 {
     margin-bottom: 15px;
 }
 
-#all-items,
-#top-rated,
-{
+#all-items {
     padding: 8px;
 }
 

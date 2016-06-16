@@ -5,21 +5,20 @@ $(document).ready(function () {
     $('#search-terms').on('click', function (event) {
         event.preventDefault();
         var item = $('#all-items').val();
-        var popular = $('#top-rated').val();
-        searchValidate(item, popular);
+        searchValidate(item);
     });
 });
 
-//add Validation(item, popular);
+//add Validation(item);
 
-var searchValidate = function (item, popular) {
+var searchValidate = function (item) {
     "use strict";
-    if ((item == '') && (popular == '')) {
+    if (item == '') {
         //alert('please enter an item in the text box!');
         $('.item-details').html('');
         return false;
     } else {
-        getItem(item, popular);
+        getItem(item);
     }
 }
 
@@ -32,7 +31,7 @@ var showError = function (error) {
 
 // takes a string of semi-colon separated tags to be searched
 // for on Etsy
-var getItem = function (item, popular) {
+var getItem = function (item) {
     var concatenatedUrl = 'https://openapi.etsy.com/v2/listings/active.js?keywords=' + item + '&limit=12&includes=Images:1&api_key=' + 'dk88st01cks0as9cv2iwr4hg';
     var result = $.ajax({
         url: concatenatedUrl,
