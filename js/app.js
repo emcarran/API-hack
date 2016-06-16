@@ -15,7 +15,7 @@ $(document).ready(function () {
 var searchValidate = function (item, popular) {
     "use strict";
     if ((item == '') && (popular == '')) {
-        alert('please enter an item in the text box!');
+        //alert('please enter an item in the text box!');
         $('.item-details').html('');
         return false;
     } else {
@@ -49,12 +49,9 @@ var getItem = function (item, popular) {
 
             itemResults += '<li>';
             itemResults += '<h2>' + item.title + '</h2>';
-            itemResults += '<div class = "product-image">';
-            itemResults += '<img src="' + item.Images[0].url_fullxfull + '" alt="item image" width="170">';
-            itemResults += '</div>';
-            itemResults += '<div class = "item-details">';
-            //itemResults += '<h2>' + item.title + '</h2>';
-            itemResults += '<p> ' + item.description + '</p>';
+            itemResults += '<div class = "product-image" style="background-image: url(' + item.Images[0].url_fullxfull + ')"></div>';
+            itemResults += '<div class = "product-details">';
+            itemResults += '<h3> ' + item.description + '</h3>';
             itemResults += '</div>';
             itemResults += '</li>';
 
