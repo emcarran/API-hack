@@ -19,7 +19,6 @@
 
 /* General styles
 (the styles used everywhere in the page (like the Body) or styles which are used in more than 2 of the modules bellow (h2, h3, h4, h5, h6, p, a, ul, li))
-
 */
 
 html {
@@ -36,42 +35,50 @@ body {
 }
 
 .search-container {
-    background-color: darkkhaki;
     margin: 1em auto;
-    max-width: 900px;
+    max-width: 600px;
     padding: 20px;
     text-align: center;
     padding-top: 20px;
-    padding-bottom: 40px;
+    padding-bottom: 30px;
+    background-color: darkseagreen;
+    border-radius: 10px;
 }
 
 h1 {
-    color: brown;
-    font-size: 35px;
+    color: darkslategrey;
+    font-size: 40px;
     margin-bottom: 15px;
+    text-shadow: 1px 1px 1px;
 }
 
 #all-items {
-    padding: 8px;
+    padding: 4px;
+    text-shadow: 0px 1px 0px grey;
+    background-color: white;
+    color: darkgray;
+    border: 1px solid;
+    border-radius: 5px;
 }
 
 #search-button {
-    border-radius: 3px;
     border: 1px solid;
     display: block;
     cursor: pointer;
-    background-color: whitesmoke;
     color: darkgray;
     font-family: arial;
-    font-size: 1.5em;
     padding: 6px 24px;
     text-decoration: none;
     text-shadow: 0px 1px 0px grey;
     margin-top: 20px;
-    margin-top: 20px;
+    margin-top: 15px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: auto;
+    padding: 5px;
+    background-color: white;
+    border-radius: 5px;
+    width: 100px;
 }
 
 .results-container {
