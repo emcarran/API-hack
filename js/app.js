@@ -48,17 +48,13 @@ var getItem = function (item) {
 
             itemResults += '<li>';
             itemResults += '<h2>' + item.title + '</h2>';
+            itemResults += '<a href = ' + item.url + ' target="_blank">';
             itemResults += '<div class = "product-image" style="background-image: url(' + item.Images[0].url_fullxfull + ')"></div>';
+            itemResults += '</a>';
             itemResults += '<div class = "product-details">';
             itemResults += '<h3> ' + item.description + '</h3>';
             itemResults += '</div>';
             itemResults += '</li>';
-
-            // itemResults += '<li><div class="product-image"><img src="' +
-            // item.Images[0].url_fullxfull + '" alt="item image" width="170"></div><div
-            // class="item-details"><p>' +
-            // item.title + '</p><p> ' +
-            // item.description + '</p></div></li>';
 
         });
 
